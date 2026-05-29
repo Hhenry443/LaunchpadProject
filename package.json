@@ -1,0 +1,27 @@
+{
+  "name": "synoptic",
+  "version": "1.0.0",
+  "description": "Synoptic Project for '26",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hhenry443/LaunchpadProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hhenry443/LaunchpadProject/issues"
+  },
+  "homepage": "https://github.com/Hhenry443/LaunchpadProject#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
