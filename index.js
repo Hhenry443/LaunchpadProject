@@ -1,8 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 app.set("view engine", "ejs");
 app.use("/mapbox-gl", express.static("./node_modules/mapbox-gl/dist"));
@@ -33,7 +34,7 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/map", (req, res) => {
-  res.render("pages/map");
+  res.render("pages/map", { mapboxToken: process.env.MAPBOX_TOKEN });
 });
 
 app.get("/hello/:name", (req, res) => {
