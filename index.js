@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 app.set("view engine", "ejs");
-
+app.use("/mapbox-gl", express.static("./node_modules/mapbox-gl/dist"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
@@ -30,6 +30,10 @@ app.get("/hello", (req, res) => {
 // about page
 app.get("/about", (req, res) => {
   res.render("pages/about");
+});
+
+app.get("/map", (req, res) => {
+  res.render("pages/map");
 });
 
 app.get("/hello/:name", (req, res) => {
