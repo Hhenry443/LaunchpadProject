@@ -1,21 +1,35 @@
 const express = require("express");
-
 const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
+app.set("view engine", "ejs");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html", (err) => {
-    if (err) console.log(err);
+  const mascots = [
+    { name: "Sammy", organization: "DigitalOcean", birth_year: 2012 },
+    { name: "Tux", organization: "Linux", birth_year: 1996 },
+    { name: "Moby Dock", organization: "Docker", birth_year: 2013 },
+  ];
+  const tagline =
+    "No programming concept is complete without a cute animal mascot.";
+
+  res.render("pages/index", {
+    mascots: mascots,
+    tagline: tagline,
   });
 });
 
 app.get("/hello", (req, res) => {
   res.send("This is the request to Hello!");
+});
+
+// about page
+app.get("/about", (req, res) => {
+  res.render("pages/about");
 });
 
 app.get("/hello/:name", (req, res) => {

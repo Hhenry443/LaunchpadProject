@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Hhenry443/LaunchpadProject#readme",
   "dependencies": {
+    "ejs": "^6.0.1",
     "express": "^5.2.1"
   },
   "devDependencies": {
