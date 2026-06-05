@@ -2,36 +2,27 @@
 <html lang="en">
   <head>
     <%- include('../partials/head'); %>
-
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v3.24.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.24.0/mapbox-gl.js"></script>
   </head>
 
-  <body
-    class="container"
-    style="
-      display: flex;
-      justify-items: center;
-      align-items: center;
-      flex-direction: column;
-    "
-  >
+  <body class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <header><%- include('../partials/header'); %></header>
-    <div id="map" style="width: 800px; height: 600px"></div>
+
+    <main class="py-6">
+      <div
+        id="map"
+        class="h-[600px] w-[800px] max-w-full rounded-lg shadow"
+      ></div>
+    </main>
+
+    <script>
+      const map = new mapboxgl.Map({
+        accessToken: "<%= mapboxToken %>",
+        container: "map",
+        center: [-1.921133, 52.480618],
+        zoom: 16,
+      });
+    </script>
+
     <footer><%- include('../partials/footer'); %></footer>
   </body>
-
-  <script>
-    // creates the map, passing your access token to associate it with your Mapbox account, and setting the container, initial center, and zoom level
-    const map = new mapboxgl.Map({
-      accessToken:
-        "pk.eyJ1IjoiaGhlbnJ5NDMzIiwiYSI6ImNtcHpjcnU5aDA5MncydHF0azh5eGdlc2EifQ.OmM7r0AP5Ssnk0k931J7Tg", // associates the map with your Mapbox account and its permissions
-      container: "map", // container ID
-      center: [-1.921347, 52.480781], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-      zoom: 15, // starting zoom
-    });
-  </script>
 </html>

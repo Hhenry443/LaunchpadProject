@@ -3,29 +3,46 @@
   <head>
     <%- include('../partials/head'); %>
   </head>
-  <body class="container">
-    <header><%- include('../partials/header'); %></header>
+
+  <body class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header>
+      <%- include('../partials/header'); %>
+    </header>
 
     <main>
-      <div class="p-5 mb-4 bg-light rounded-3">
-        <h1>This is great</h1>
-        <p>Welcome to templating using EJS</p>
+      <div class="mb-4 rounded-lg bg-gray-200 p-8">
+        <h1 class="mb-4 text-4xl font-bold text-gray-900">
+          This is great
+        </h1>
 
-        <h2>Variable</h2>
-        <p><%= tagline %></p>
+        <p class="mb-6 text-lg text-gray-700">
+          Welcome to templating using EJS
+        </p>
 
-        <ul>
-        <% mascots.forEach(function(mascot) { %>
+        <h2 class="mb-3 text-2xl font-semibold text-gray-900">
+          Variable
+        </h2>
+
+        <p class="mb-6 text-gray-700">
+          <%= tagline %>
+        </p>
+
+        <ul class="list-disc space-y-2 pl-6 text-gray-700">
+          <% mascots.forEach(function(mascot) { %>
             <li>
-            <strong><%= mascot.name %></strong>
-            representing <%= mascot.organization %>,
-            born <%= mascot.birth_year %>
+              <strong class="font-semibold text-gray-900">
+                <%= mascot.name %>
+              </strong>
+              representing <%= mascot.organization %>,
+              born <%= mascot.birth_year %>
             </li>
-        <% }); %>
+          <% }); %>
         </ul>
       </div>
     </main>
 
-    <footer><%- include('../partials/footer'); %></footer>
+    <footer>
+      <%- include('../partials/footer'); %>
+    </footer>
   </body>
 </html>
