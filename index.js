@@ -1,30 +1,24 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mysql = require("mysql2/promise");
-require("dotenv").config();
+import express from "express";
+import bodyParser from "body-parser";
+import mysql from "mysql2/promise";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
 
+// Create the connection to database
+const connection = await mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PSSWRD,
+  database: process.env.DB_NAME,
+});
+
 app.set("view engine", "ejs");
 app.use("/mapbox-gl", express.static("./node_modules/mapbox-gl/dist"));
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get("/", (req, res) => {
-  const markers = [
-    { name: "Bobs Food Bank", lng: 52.481866, lat: -1.922431 },
-    { name: "All Hope Food Bank", lng: 52.481657, lat: -1.920542 },
-    { name: "No Mouths Unfed", lng: 52.480592, lat: -1.921476 },
-  ];
-
-  const tagline =
-    "No programming concept is complete without a cute animal mascot.";
-
-  res.render("pages/index", {
-    mascots: mascots,
-    tagline: tagline,
-  });
-});
+app.use(express.static("public"));
 
 app.get("/hello", (req, res) => {
   res.send("This is the request to Hello!");
@@ -35,8 +29,26 @@ app.get("/about", (req, res) => {
   res.render("pages/about");
 });
 
-app.get("/map", (req, res) => {
-  res.render("pages/map", { mapboxToken: process.env.MAPBOX_TOKEN });
+app.get("/map", async (req, res) => {
+  try {
+    const [foodbankMarkers, foodbankFields] = await connection.query(
+      "SELECT * FROM `foodbanks`",
+    );
+
+    const [allotmentMarkers, allotmentFields] = await connection.query(
+      "SELECT * FROM `allotments`",
+    );
+
+    res.render("pages/map", {
+      mapboxToken: process.env.MAPBOX_TOKEN,
+      foodbankMarkers: foodbankMarkers,
+      allotmentMarkers: allotmentMarkers,
+    });
+
+    console.log(foodbankMarkers); // results contains rows returned by server
+  } catch (err) {
+    console.error("DB error:", err); // more visible than console.log
+  }
 });
 
 app.get("/hello/:name", (req, res) => {
@@ -48,39 +60,7 @@ app.get("/hello/:name", (req, res) => {
 
 // Home page
 app.get("/", (req, res) => {
-  const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "test",
-  });
-
-  // execute will internally call prepare and query
-  connection.execute(
-    "SELECT * FROM `tbl_foodbanks`",
-    function (err, results, fields) {
-      console.log(results); // results contains rows returned by server
-      console.log(fields); // fields contains extra meta data about results, if available
-
-      // Close the connection
-      connection.end();
-    },
-  );
-
   res.render("pages/home");
-});
-
-// Map Page
-app.get("/map", (req, res) => {
-  // Get the food banks for the markers
-  const markers = [
-    { name: "Bobs Food Bank", lng: 52.481866, lat: -1.922431 },
-    { name: "All Hope Food Bank", lng: 52.481657, lat: -1.920542 },
-    { name: "No Mouths Unfed", lng: 52.480592, lat: -1.921476 },
-  ];
-
-  res.render("pages/map", {
-    markers: markers,
-  });
 });
 
 // Allotment notice board
