@@ -2,31 +2,8 @@
 <html lang="en">
   <head>
     <%- include('../partials/head'); %>
-    <style>
-      .marker-icon-foodbank {
-        color: #335d3b; /* icon colour */
-        font-size: 2rem; /* icon size */
-        cursor: pointer;
-        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
-      }
 
-      .marker-icon-allotment {
-        color: #6a994e; /* icon colour */
-        font-size: 2rem; /* icon size */
-        cursor: pointer;
-        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
-      }
-
-      .mapboxgl-popup {
-        max-width: 200px;
-        padding: 5px;
-      }
-
-      .mapboxgl-popup-content {
-        text-align: center;
-        font-family: "Open Sans", sans-serif;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/homepage.css" />
 
     <link
       rel="stylesheet"
@@ -38,8 +15,66 @@
     <header><%- include('../partials/header'); %></header>
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <main class="py-6">
-        <div class="h-[800px] w-full max-w-full rounded-lg shadow"></div>
+      <main>
+        <section class="intro-section">
+          <div class="intro-container">
+            <h1>Ladywood Food Support Map</h1>
+
+            <p>
+              Helping connect residents with local food banks, allotments,
+              community produce and local shops.
+            </p>
+
+            <a href="map.html" class="map-button"> View Interactive Map </a>
+          </div>
+        </section>
+
+        <section class="features">
+          <div class="card">
+            <h2>Food Banks</h2>
+            <p>Find nearby food banks and support centres.</p>
+          </div>
+
+          <div class="card">
+            <h2>Allotments</h2>
+            <p>Discover community growing spaces and local produce.</p>
+          </div>
+
+          <div class="card">
+            <h2>Local Shops</h2>
+            <p>Support local businesses providing food and essentials.</p>
+          </div>
+        </section>
+
+        <section class="about">
+          <div class="about-container">
+            <div class="about-text">
+              <h2>About the Project</h2>
+
+              <p>
+                The Ladywood Food Support Network aims to help residents locate
+                food support services within the local area.
+              </p>
+
+              <p>
+                Through an interactive map, users can find food banks, community
+                allotments, produce advertisements and local shops that
+                contribute to food accessibility.
+              </p>
+
+              <p>
+                This project was developed as part of a university database
+                application, demonstrating how geographic information and
+                community resources can be brought together in a single
+                platform.
+              </p>
+            </div>
+
+            <div class="about-image">
+              <img src="./images/ladywood.webp" alt="Ladywood" />
+            </div>
+          </div>
+        </section>
       </main>
     </div>
 
