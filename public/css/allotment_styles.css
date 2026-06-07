@@ -1,0 +1,66 @@
+/* Styles for dynamically generated post cards (via allotments.js) */
+
+.post-card {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-left: 8px solid #6A994E;
+    font-family: Arial, sans-serif;
+}
+
+.post-card h2 {
+    color: #386641;
+    margin-bottom: 15px;
+}
+
+.post-info {
+    margin: 8px 0;
+    color: #335D3B;
+}
+
+.button-row {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.interest-btn {
+    background: #A7C957;
+    color: #335D3B;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.interest-btn:hover {
+    background: #6A994E;
+    color: white;
+}
+
+.delete-btn {
+    background: #BC4749;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #A33F40;
+}
+
+.interest-list {
+    margin-top: 15px;
+}
+
+.interest-list p {
+    font-size: 14px;
+    color: #386641;
+    margin-top: 5px;
+}

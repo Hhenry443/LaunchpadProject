@@ -20,15 +20,12 @@ app.use("/mapbox-gl", express.static("./node_modules/mapbox-gl/dist"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
-app.get("/hello", (req, res) => {
-  res.send("This is the request to Hello!");
+// Home page
+app.get("/", (req, res) => {
+  res.render("pages/home");
 });
 
-// about page
-app.get("/about", (req, res) => {
-  res.render("pages/about");
-});
-
+// Map Page
 app.get("/map", async (req, res) => {
   try {
     const [foodbankMarkers, foodbankFields] = await connection.query(
@@ -51,26 +48,21 @@ app.get("/map", async (req, res) => {
   }
 });
 
+// Allotment Offerings
+app.get("/allotment-offer", (req, res) => {
+  res.render("pages/offer");
+});
+
+// Allotment Board
+app.get("/allotment-board", (req, res) => {
+  res.render("pages/board");
+});
+
 app.get("/hello/:name", (req, res) => {
   const routeParameter = req.params;
   const name = routeParameter.name;
   // or const name = req.params.name
   res.send(`Hello ${name}, welcome to my NodeJS application!`);
-});
-
-// Home page
-app.get("/", (req, res) => {
-  res.render("pages/home");
-});
-
-// Allotment notice board
-app.get("/allotment/notices", (req, res) => {
-  res.render("pages/notices");
-});
-
-// Allotment offering form
-app.get("/allotment/offer", (req, res) => {
-  res.render("pages/offering");
 });
 
 app.get("/form", (req, res) => {

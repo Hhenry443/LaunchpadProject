@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allotment Board</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./css/allotment_styles.css" />
+  </head>
+
+  <body class="bg-[#F2E8CF] min-h-screen font-sans">
+    <%- include('../partials/header') %>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="p-6 md:p-8">
+        <header
+          class="flex flex-col md:flex-row justify-between items-start mb-8 gap-6"
+        >
+          <div class="flex-1">
+            <h1 class="text-3xl font-bold text-[#335D3B] mb-4">
+              Allotment Produce Offers
+            </h1>
+            <p class="text-sm text-[#335D3B] leading-relaxed">
+              The Ladywood Allotment Notice Board is a community tool designed
+              to help support people experiencing food poverty by connecting
+              local residents with free surplus food from allotment growers.
+              Allotment users can post information about extra fruit,
+              vegetables, or other produce they have available, including their
+              name, which allotment site they are based at, what food they are
+              offering, and the amount available. Anyone using the website can
+              browse these posts and contact or visit the allotment user to
+              collect the food. The page is designed to be simple and easy to
+              use, helping reduce food waste while making fresh, healthy food
+              more accessible to people in the local community.
+            </p>
+          </div>
+
+          <a href="/allotment-offer">
+            <button
+              class="bg-[#386641] text-[#F2E8CF] px-6 py-3 text-base cursor-pointer hover:bg-[#335D3B] transition-colors whitespace-nowrap"
+            >
+              + New Offer
+            </button>
+          </a>
+        </header>
+
+        <section id="postContainer" class="flex flex-col gap-5"></section>
+      </div>
+    </div>
+
+    <script src="./js/allotments.js"></script>
+  </body>
+</html>

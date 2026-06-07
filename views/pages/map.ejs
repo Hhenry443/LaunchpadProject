@@ -34,52 +34,57 @@
     />
   </head>
 
-  <body class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <body class="bg-[#F2E8CF]">
     <header><%- include('../partials/header'); %></header>
 
-    <main class="py-6">
-      <div id="map" class="h-[600px] w-full max-w-full rounded-lg shadow"></div>
-    </main>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <main class="py-6">
+        <div
+          id="map"
+          class="h-[600px] w-full max-w-full rounded-lg shadow"
+        ></div>
+      </main>
 
-    <script>
-      // @ts-ignore
-      const foodBankMarkers = <%- JSON.stringify(foodbankMarkers) %>;
+      <script>
+        // @ts-ignore
+        const foodBankMarkers = <%- JSON.stringify(foodbankMarkers) %>;
 
-      const allotmentMarkers = <%- JSON.stringify(allotmentMarkers) %>;
+        const allotmentMarkers = <%- JSON.stringify(allotmentMarkers) %>;
 
-      const MAPBOX_TOKEN = "<%= mapboxToken %>";
-    </script>
+        const MAPBOX_TOKEN = "<%= mapboxToken %>";
+      </script>
 
-    <div
-      id="Key"
-      class="w-auto bg-gray-100 rounded-lg flex items-center flex-col space-y-2 p-4 mb-6"
-    >
-      <p class="font-bold w-full text-center">Purchasing Power of Area</p>
       <div
-        class="w-80/100 h-5 bg-gradient-to-r from-[rgb(215,25,28)] via-[rgb(255,255,102)] to-[rgb(44,123,182)] rounded-lg"
-      ></div>
-      <div class="w-8/10 flex justify-between font-semibold">
-        <p>Greater</p>
-        <p>Lesser</p>
+        id="Key"
+        class="w-auto bg-[#6A994E] rounded-lg flex items-center flex-col space-y-2 p-4 mb-6 text-white"
+      >
+        <p class="font-bold w-full text-center">Purchasing Power of Area</p>
+        <div
+          class="w-80/100 h-5 bg-gradient-to-r from-[rgb(215,25,28)] via-[rgb(255,255,102)] to-[rgb(44,123,182)] rounded-lg"
+        ></div>
+        <div class="w-8/10 flex justify-between font-semibold">
+          <p>Greater</p>
+          <p>Lesser</p>
+        </div>
       </div>
-    </div>
 
-    <div
-      id="toggleButtons"
-      class="w-auto bg-gray-100 rounded-lg flex items-center flex-col gap-4 p-4"
-    >
-      <p class="font-bold w-full text-center">Map Toggles</p>
       <div
-        id="buttons"
-        class="w-full flex flex-col sm:flex-row items-center justify-around text-center gap-4"
-      ></div>
+        id="toggleButtons"
+        class="w-auto bg-[#6A994E] rounded-lg flex items-center flex-col gap-4 p-4"
+      >
+        <p class="font-bold w-full text-center text-white">Map Toggles</p>
+        <div
+          id="buttons"
+          class="w-full flex flex-col sm:flex-row items-center justify-around text-center gap-4"
+        ></div>
+      </div>
+
+      <script src="/js/markers.js"></script>
+
+      <script src="/js/purchasingPower.js"></script>
+
+      <script src="/js/toggleButtons.js"></script>
     </div>
-
-    <script src="/js/markers.js"></script>
-
-    <script src="/js/purchasingPower.js"></script>
-
-    <script src="/js/toggleButtons.js"></script>
 
     <footer><%- include('../partials/footer'); %></footer>
   </body>
