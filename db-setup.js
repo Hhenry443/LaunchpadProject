@@ -47,12 +47,14 @@ async function setup() {
   await connection.query(`
   INSERT INTO synoptic.allotments (a_name,a_description,a_lat,a_lng) VALUES
 	 ('Bens Allotment','A good food bank',52.4806,-1.9189),
-	 ('Ladywood Council Allotment','A better food bank',52.4822,-1.9227);
+	 ('Ladywood Council Allotment','A better food bank',52.4822,-1.9227)
+`);
 
+  await connection.query(`
   INSERT INTO synoptic.foodbanks (fb_name,fb_description,fb_lat,fb_lng) VALUES
   ('Bobs Food Bank','A good food bank',52.4819,-1.92243),
   ('All Hope Food Bank','A really good food bank',52.4817,-1.92054),
-  ('No Mouths Unfed','A great food bank',52.4806,-1.92148);
+  ('No Mouths Unfed','A great food bank',52.4806,-1.92148)
 `);
 
   console.log("Database ready!");
